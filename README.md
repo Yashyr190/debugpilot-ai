@@ -287,7 +287,7 @@ The project emphasizes:
 
 ## 📹 Demo Video
 
-Demo walkthrough coming soon.
+(https://drive.google.com/file/d/1B6vfclYXRypmdNDDFDD16DtDiTtuYRL2/view?usp=sharing)
 
 ---
 
