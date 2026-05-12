@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #080b10;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(94, 234, 212, 0.32);
+  color: #f8fafc;
+}
+
+.debug-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.055) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(8, 11, 16, 0.2), #080b10 76%);
+  background-size:
+    44px 44px,
+    44px 44px,
+    100% 100%;
+}
+
+.report-card-enter {
+  animation: report-card-enter 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  opacity: 0;
+}
+
+.premium-control {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.premium-control:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 12px 34px rgba(45, 212, 191, 0.08);
+}
+
+.premium-control:active:not(:disabled) {
+  transform: translateY(0) scale(0.99);
+}
+
+.premium-surface {
+  box-shadow:
+    0 24px 80px rgba(2, 6, 23, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(110deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.095));
+}
+
+.shimmer::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(94, 234, 212, 0.12),
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+  animation: shimmer 1.55s ease-in-out infinite;
+}
+
+.confidence-fill {
+  animation:
+    confidence-fill 820ms cubic-bezier(0.22, 1, 0.36, 1) both,
+    confidence-glow 1.4s ease-out 620ms both;
+  box-shadow: 0 0 18px rgba(94, 234, 212, 0.22);
+  transform-origin: left;
+}
+
+.confidence-value {
+  animation: confidence-value-pop 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.empty-state-frame {
+  animation:
+    empty-state-border 3.2s ease-in-out infinite,
+    empty-state-float 5.5s ease-in-out infinite;
+}
+
+@keyframes report-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes confidence-value-pop {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes confidence-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(94, 234, 212, 0));
+  }
+
+  45% {
+    filter: drop-shadow(0 0 8px rgba(94, 234, 212, 0.32));
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes empty-state-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes confidence-fill {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes empty-state-border {
+  0%,
+  100% {
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0);
+  }
+
+  50% {
+    border-color: rgba(94, 234, 212, 0.34);
+    box-shadow: inset 0 0 26px rgba(45, 212, 191, 0.045);
+  }
+}
+
+textarea::-webkit-scrollbar {
+  width: 10px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.75);
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: rgba(94, 234, 212, 0.25);
+  border-radius: 8px;
+}
